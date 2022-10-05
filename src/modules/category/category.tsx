@@ -19,7 +19,6 @@ import { IconTrashX } from "@tabler/icons";
 import { DataTable } from "mantine-datatable";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import Debugger from "src/common/components/elements/debugger";
 import Layout from "src/common/components/layouts/layout";
 import { trpc } from "src/common/utils/trpc";
 import { z } from "zod";
@@ -183,7 +182,6 @@ export default function Category({}: Props) {
         />
       </Paper>
       <Paper p="lg" mt="lg">
-        <Debugger data={MANTINE_COLORS} />
         <form onSubmit={form.onSubmit(handleSubmit)}>
           <Stack>
             <TextInput label="Nama" {...form.getInputProps("name")} />

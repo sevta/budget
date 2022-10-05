@@ -68,6 +68,7 @@ export default function SignInPage() {
           <PasswordInput label="Password" {...form.getInputProps("password")} />
           <Stack spacing="xs">
             <Button
+              loading={status === "loading"}
               onClick={async () => {
                 try {
                   const resp = await signIn("credentials", {
