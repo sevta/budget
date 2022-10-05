@@ -1,4 +1,5 @@
-import { MantineProvider } from "@mantine/core";
+import { ColorScheme, MantineProvider } from "@mantine/core";
+import { useLocalStorage } from "@mantine/hooks";
 import { ModalsProvider } from "@mantine/modals";
 import { NotificationsProvider } from "@mantine/notifications";
 import { SessionProvider } from "next-auth/react";
@@ -11,6 +12,11 @@ function App(props: any) {
     Component,
     pageProps: { session, ...pageProps },
   } = props;
+
+  const [value, setValue] = useLocalStorage<ColorScheme>({
+    key: "color-scheme",
+    defaultValue: "dark",
+  });
 
   return (
     <>
@@ -27,7 +33,7 @@ function App(props: any) {
         withNormalizeCSS
         theme={{
           /** Put your mantine theme override here */
-          colorScheme: "light",
+          colorScheme: value,
           primaryColor: "primary",
           fontFamily: "Source Sans Pro",
           headings: {
@@ -214,6 +220,7 @@ function App(props: any) {
           <ModalsProvider>
             <NotificationsProvider>
               <NextNProgress />
+
               <Component {...pageProps} />
             </NotificationsProvider>
           </ModalsProvider>
