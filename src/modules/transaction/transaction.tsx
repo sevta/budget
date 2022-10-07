@@ -21,7 +21,11 @@ import {
   Tooltip,
   useMantineTheme,
 } from "@mantine/core";
-import { DatePicker, DateRangePicker } from "@mantine/dates";
+import {
+  DatePicker,
+  DateRangePicker,
+  DateRangePickerValue,
+} from "@mantine/dates";
 import { useForm, zodResolver } from "@mantine/form";
 import { useInputState } from "@mantine/hooks";
 import { openConfirmModal } from "@mantine/modals";
@@ -46,10 +50,22 @@ type Props = {
 
 export default function Transaction({ withTopBar = true }: Props) {
   const theme = useMantineTheme();
+
+  const [selectedRecords, setSelectedRecords] = useState<any>([]);
+  const [isEditMode, setIsEditMode] = useState<boolean>(false);
+  const [dateValue, setDateValue] = useState<DateRangePickerValue>([
+    null,
+    null,
+  ]);
+
   const [query, setQuery] = useInputState("");
   const { data: categories } = trpc.category.list.useQuery();
   const { data: items, isLoading } = trpc.transaction.list.useQuery({
     query,
+    date: {
+      from: dateValue[0],
+      to: dateValue[1],
+    },
   });
   const {
     mutate,
@@ -61,9 +77,8 @@ export default function Transaction({ withTopBar = true }: Props) {
   const { mutate: update, isSuccess: isSuccessUpdate } =
     trpc.transaction.update.useMutation();
   const utils = trpc.useContext();
+
   const { data: session } = useSession();
-  const [selectedRecords, setSelectedRecords] = useState<any>([]);
-  const [isEditMode, setIsEditMode] = useState<boolean>(false);
 
   const { data: accumulate } = trpc.transaction.accumulate.useQuery({
     withTotal: false,
@@ -162,7 +177,7 @@ export default function Transaction({ withTopBar = true }: Props) {
       padding={0}
       aside={
         <Aside
-          width={{ base: 400 }}
+          width={{ base: 340 }}
           sx={{
             border: 0,
             backgroundColor:
@@ -256,11 +271,17 @@ export default function Transaction({ withTopBar = true }: Props) {
       {withTopBar && <TransactionTopBar />}
 
       <Container py="lg" mt={70}>
-        <DateRangePicker
-          placeholder="Select date"
-          label="Select date"
-          mb="lg"
-        />
+        <Group>
+          <DateRangePicker
+            sx={{ flex: 1 }}
+            placeholder="Select date"
+            label="Select date"
+            mb="lg"
+            value={dateValue}
+            onChange={setDateValue}
+          />
+          <Button>Apply</Button>
+        </Group>
 
         <TransactionStat
           totalIncome={items?.totalIncome}

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Center,
   Paper,
@@ -9,7 +10,6 @@ import {
 import { IconArrowDown, IconArrowUp } from "@tabler/icons";
 import { useMemo } from "react";
 import { formatRupiah } from "src/common/utils/formatRupiah";
-import { trpc } from "src/common/utils/trpc";
 
 type Props = {
   totalIncome?: number;
@@ -22,10 +22,6 @@ export default function TransactionStat({
   totalOutcome = 0,
   subTotal = 0,
 }: Props) {
-  const { data: accumulate } = trpc.transaction.accumulate.useQuery({
-    withTotal: false,
-  });
-
   const getTotalIncome = useMemo(() => {
     return ((totalIncome - totalOutcome) / subTotal) * 100;
   }, [totalIncome]);

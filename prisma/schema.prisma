@@ -125,4 +125,5 @@ enum Status {
 enum ItemType {
   INCOME
   OUTCOME
+  LOAN
 }

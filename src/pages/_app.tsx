@@ -7,6 +7,21 @@ import Head from "next/head";
 import NextNProgress from "nextjs-progressbar";
 import { trpc } from "src/common/utils/trpc";
 
+import "@fontsource/josefin-sans/100.css";
+import "@fontsource/josefin-sans/200.css";
+import "@fontsource/josefin-sans/300.css";
+import "@fontsource/josefin-sans/400.css";
+import "@fontsource/josefin-sans/500.css";
+import "@fontsource/josefin-sans/600.css";
+import "@fontsource/josefin-sans/700.css";
+
+import "@fontsource/open-sans/300.css";
+import "@fontsource/open-sans/400.css";
+import "@fontsource/open-sans/500.css";
+import "@fontsource/open-sans/600.css";
+import "@fontsource/open-sans/700.css";
+import "@fontsource/open-sans/800.css";
+
 function App(props: any) {
   const {
     Component,

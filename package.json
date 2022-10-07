@@ -11,6 +11,8 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/server": "^11.10.0",
+    "@fontsource/josefin-sans": "^4.5.11",
+    "@fontsource/open-sans": "^4.5.12",
     "@mantine/core": "^5.5.1",
     "@mantine/dates": "^5.5.0",
     "@mantine/form": "^5.5.0",

@@ -80,6 +80,14 @@ export default function Settings({}: Props) {
                   Label: "Source Sans Pro",
                   value: "Source Sans Pro",
                 },
+                {
+                  label: "Josefin Sans",
+                  value: "Josefin Sans",
+                },
+                {
+                  label: "Open Sans",
+                  value: "Open Sans",
+                },
               ]}
             />
           </Stack>

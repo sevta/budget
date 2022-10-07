@@ -119,7 +119,16 @@ export const transactionRouter = t.router({
     }),
 
   list: t.procedure
-    .input(z.object({ query: z.string(), from: z.string().nullish() }))
+    .input(
+      z.object({
+        query: z.string(),
+        from: z.string().nullish(),
+        date: z.object({
+          from: z.date().nullish(),
+          to: z.date().nullish(),
+        }),
+      })
+    )
     .query(async ({ input, ctx }) => {
       try {
         let resp = await ctx.prisma.item.findMany({
@@ -129,7 +138,12 @@ export const transactionRouter = t.router({
           orderBy: {
             createdAt: "desc",
           },
+
           where: {
+            createdAt: {
+              lte: input.date!.to || undefined,
+              gte: input.date!.from || undefined,
+            },
             OR: [
               {
                 description: {

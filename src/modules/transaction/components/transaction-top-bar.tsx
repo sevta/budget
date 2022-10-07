@@ -31,7 +31,7 @@ export default function TransactionTopBar({ rightSection }: Props) {
           </ActionIcon>
           <Stack spacing={0}>
             <Title order={4}>Transaction outcome/income</Title>
-            <Text size="xs">{moment().format("YYYY-MM-DD")}</Text>
+            <Text size="sm">{moment().format("MMMM, YYYY")}</Text>
           </Stack>
         </Group>
         {rightSection}

@@ -38,7 +38,7 @@ export default function Layout({
       sx={{
         backgroundColor:
           theme.colorScheme === "light"
-            ? theme.fn.lighten(theme.colors.gray[1], 0.5)
+            ? theme.fn.lighten(theme.colors[theme.primaryColor][1], 0.6)
             : theme.colors.dark[9],
       }}
       {...(showSideBar && {
