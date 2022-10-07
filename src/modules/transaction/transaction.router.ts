@@ -140,7 +140,51 @@ export const transactionRouter = t.router({
           },
         });
 
-        return resp;
+        let itemOutcome = await ctx.prisma.item.findMany({
+          where: {
+            type: ItemType.OUTCOME,
+          },
+          select: {
+            amount: true,
+          },
+        });
+
+        let itemIncome = await ctx.prisma.item.findMany({
+          where: {
+            type: ItemType.INCOME,
+          },
+          select: {
+            amount: true,
+          },
+        });
+
+        let totalOutcome = itemOutcome
+          .map((item) => item.amount)
+          .reduce((prev, next) => prev + next);
+
+        let totalIncome = itemIncome
+          .map((item) => item.amount)
+          .reduce((prev, next) => prev + next);
+
+        let subTotal = resp
+          .map((item) => item.amount)
+          .reduce((prev, next) => prev + next);
+
+        let totalAccumulate = resp
+          .map((item) =>
+            item.type === ItemType.OUTCOME
+              ? -Math.abs(item.amount)
+              : item.amount
+          )
+          .reduce((prev, next) => prev + next);
+
+        return {
+          data: resp,
+          totalIncome,
+          totalOutcome,
+          subTotal,
+          totalAccumulate,
+        };
       } catch (error) {
         throw error;
       }

@@ -153,6 +153,26 @@ function App(props: any) {
                   },
                 };
               },
+
+              defaultProps: {
+                radius: "md",
+              },
+            },
+            DateRangePicker: {
+              styles(theme) {
+                return {
+                  input: {
+                    // backgroundColor:
+                    //   theme.colorScheme === "light"
+                    //     ? theme.colors.gray[0]
+                    //     : theme.fn.darken(theme.colors.dark[6], 0.1),
+                    // borderWidth: 0,
+                    // borderBottomWidth: 2,
+                    // borderColor: theme.fn.primaryColor(),
+                  },
+                };
+              },
+
               defaultProps: {
                 radius: "md",
               },

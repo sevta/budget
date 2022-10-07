@@ -21,7 +21,7 @@ import {
   Tooltip,
   useMantineTheme,
 } from "@mantine/core";
-import { DatePicker } from "@mantine/dates";
+import { DatePicker, DateRangePicker } from "@mantine/dates";
 import { useForm, zodResolver } from "@mantine/form";
 import { useInputState } from "@mantine/hooks";
 import { openConfirmModal } from "@mantine/modals";
@@ -105,7 +105,7 @@ export default function Transaction({ withTopBar = true }: Props) {
   }
 
   function getTotalAmount() {
-    return items
+    return items?.data
       ?.map((item) =>
         item.type === "OUTCOME" ? -Math.abs(item.amount) : item.amount
       )
@@ -256,7 +256,17 @@ export default function Transaction({ withTopBar = true }: Props) {
       {withTopBar && <TransactionTopBar />}
 
       <Container py="lg" mt={70}>
-        <TransactionStat />
+        <DateRangePicker
+          placeholder="Select date"
+          label="Select date"
+          mb="lg"
+        />
+
+        <TransactionStat
+          totalIncome={items?.totalIncome}
+          totalOutcome={items?.totalOutcome}
+          subTotal={items?.subTotal}
+        />
 
         <Paper mt="lg" p="lg">
           <Group position="apart">
@@ -322,7 +332,7 @@ export default function Transaction({ withTopBar = true }: Props) {
           <DataTable
             mt="sm"
             striped
-            records={items}
+            records={items?.data}
             highlightOnHover
             fetching={isLoading}
             selectedRecords={selectedRecords}
@@ -332,7 +342,7 @@ export default function Transaction({ withTopBar = true }: Props) {
                 accessor: "no",
                 width: 40,
                 render(record) {
-                  return <span>{items!.indexOf(record) + 1}</span>;
+                  return <span>{items!.data!.indexOf(record) + 1}</span>;
                 },
               },
               {
