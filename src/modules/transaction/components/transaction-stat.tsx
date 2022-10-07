@@ -92,7 +92,7 @@ export default function TransactionStat({
             thickness={12}
             sections={[
               {
-                value: getTotalIncome < 100 ? 0 : getTotalIncome,
+                value: getTotalIncome < 0 ? 0 : getTotalIncome,
                 color: "green",
                 tooltip:
                   Math.round(((totalIncome - totalOutcome) / subTotal) * 100) +
