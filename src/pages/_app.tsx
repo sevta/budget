@@ -1,4 +1,4 @@
-import { ColorScheme, MantineProvider } from "@mantine/core";
+import { ColorScheme, MantineColor, MantineProvider } from "@mantine/core";
 import { useLocalStorage } from "@mantine/hooks";
 import { ModalsProvider } from "@mantine/modals";
 import { NotificationsProvider } from "@mantine/notifications";
@@ -13,9 +13,19 @@ function App(props: any) {
     pageProps: { session, ...pageProps },
   } = props;
 
-  const [value, setValue] = useLocalStorage<ColorScheme>({
+  const [value] = useLocalStorage<ColorScheme>({
     key: "color-scheme",
     defaultValue: "dark",
+  });
+
+  const [colorScheme] = useLocalStorage<MantineColor>({
+    key: "color-theme",
+    defaultValue: "primary",
+  });
+
+  const [fontFamily] = useLocalStorage({
+    key: "font-theme",
+    defaultValue: "Source Sans Pro",
   });
 
   return (
@@ -34,10 +44,10 @@ function App(props: any) {
         theme={{
           /** Put your mantine theme override here */
           colorScheme: value,
-          primaryColor: "primary",
-          fontFamily: "Source Sans Pro",
+          primaryColor: colorScheme,
+          fontFamily,
           headings: {
-            fontFamily: "Source Sans Pro",
+            fontFamily,
           },
           colors: {
             secondary: [

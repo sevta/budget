@@ -1,20 +1,26 @@
 import {
+  ActionIcon,
+  Affix,
   AppShell,
   AppShellProps,
   LoadingOverlay,
+  Tooltip,
   useMantineTheme,
 } from "@mantine/core";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { FiSettings } from "react-icons/fi";
 import SideBar from "./sidebar";
 
 interface LayoutProps extends AppShellProps {
   showSideBar?: boolean;
+  showSettingsButton?: boolean;
 }
 
 export default function Layout({
   children,
   showSideBar = true,
+  showSettingsButton = false,
   ...props
 }: LayoutProps) {
   const theme = useMantineTheme();
@@ -40,6 +46,25 @@ export default function Layout({
       })}
       {...props}
     >
+      {showSettingsButton && (
+        <Affix
+          position={{
+            bottom: 30,
+            right: 50,
+          }}
+        >
+          <Tooltip label="Settings">
+            <ActionIcon
+              radius="xl"
+              size="xl"
+              variant="filled"
+              color={theme.fn.primaryColor()}
+            >
+              <FiSettings />
+            </ActionIcon>
+          </Tooltip>
+        </Affix>
+      )}
       {children}
     </AppShell>
   );
