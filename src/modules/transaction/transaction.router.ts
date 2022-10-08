@@ -14,6 +14,7 @@ export const transactionRouter = t.router({
             amount: input.amount,
             type: input.type,
             categoryId: input.categoryId,
+            date: input.date,
           },
         });
         return resp;

@@ -7,4 +7,5 @@ export const transactionCreateSchema = z.object({
   amount: z.number().min(4),
   categoryId: z.string().min(4),
   type: z.nativeEnum(ItemType),
+  date: z.any().nullish(),
 });

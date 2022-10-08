@@ -53,6 +53,7 @@ export default function Transaction({ withTopBar = true }: Props) {
 
   const [selectedRecords, setSelectedRecords] = useState<any>([]);
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
+  const [date, setDate] = useState<Date | null>();
   const [dateValue, setDateValue] = useState<DateRangePickerValue>([
     null,
     null,
@@ -93,6 +94,7 @@ export default function Transaction({ withTopBar = true }: Props) {
       description: "",
       amount: 0,
       type: ItemType.OUTCOME,
+      date: new Date(),
     },
 
     validate: zodResolver(transactionCreateSchema),
@@ -107,6 +109,7 @@ export default function Transaction({ withTopBar = true }: Props) {
           categoryId: values.categoryId || "",
           type: values.type || ItemType.OUTCOME,
           description: values.description || "",
+          date: values.date || new Date(),
         });
       } else {
         mutate({
@@ -114,6 +117,7 @@ export default function Transaction({ withTopBar = true }: Props) {
           categoryId: values.categoryId || "",
           type: values.type || ItemType.OUTCOME,
           description: values.description || "",
+          date: values.date || new Date(),
         });
       }
     } catch (error) {
@@ -233,7 +237,13 @@ export default function Transaction({ withTopBar = true }: Props) {
                   {...form.getInputProps("description")}
                 />
                 <NumberInput label="Amount" {...form.getInputProps("amount")} />
-                <DatePicker label="Tanggal" defaultValue={new Date()} />
+                <DatePicker
+                  label="Tanggal"
+                  defaultValue={new Date()}
+                  value={date}
+                  onChange={(value) => setDate(value)}
+                  {...form.getInputProps("date")}
+                />
                 <Radio.Group {...form.getInputProps("type")}>
                   {Object.keys(ItemType).map((item, index) => (
                     <Radio
@@ -418,7 +428,15 @@ export default function Transaction({ withTopBar = true }: Props) {
                 },
               },
               {
-                accessor: "Date",
+                accessor: "date",
+                render(record) {
+                  return (
+                    <span>{moment(record.date).format("YYYY-MM-DD")}</span>
+                  );
+                },
+              },
+              {
+                accessor: "createdAt",
                 render(record) {
                   return (
                     <span>{moment(record.createdAt).format("YYYY-MM-DD")}</span>

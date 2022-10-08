@@ -1,5 +1,5 @@
 import { Box, Navbar, Stack, Title, useMantineTheme } from "@mantine/core";
-import { IconSettings, IconWorldWww } from "@tabler/icons";
+import { IconCalendar, IconSettings, IconWorldWww } from "@tabler/icons";
 import { signOut } from "next-auth/react";
 import { AiOutlinePoweroff, AiOutlineUsergroupDelete } from "react-icons/ai";
 import { HiOutlineHome } from "react-icons/hi";
@@ -64,6 +64,11 @@ export default function SideBar() {
           label="Transaction"
           icon={<AiOutlineUsergroupDelete {...iconConfig} />}
           url="/dashboard/transaction"
+        />
+        <SideBarLink
+          label="Calendar"
+          icon={<IconCalendar {...iconConfig} />}
+          url="/dashboard/calendar"
         />
         <SideBarLink
           label="Settings"
