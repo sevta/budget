@@ -114,6 +114,7 @@ export const transactionRouter = t.router({
 
         return resp;
       } catch (error) {
+        console.log({ error });
         throw error;
       }
     }),
@@ -122,11 +123,8 @@ export const transactionRouter = t.router({
     .input(
       z.object({
         query: z.string(),
-        from: z.string().nullish(),
-        date: z.object({
-          from: z.date().nullish(),
-          to: z.date().nullish(),
-        }),
+        from: z.any(),
+        to: z.any(),
       })
     )
     .query(async ({ input, ctx }) => {
@@ -140,17 +138,13 @@ export const transactionRouter = t.router({
           },
 
           where: {
-            createdAt: {
-              lte: input.date!.to || undefined,
-              gte: input.date!.from || undefined,
+            description: {
+              contains: input.query,
             },
-            OR: [
-              {
-                description: {
-                  contains: input.query,
-                },
-              },
-            ],
+            createdAt: {
+              gte: input.from || undefined,
+              lte: input.to || undefined,
+            },
           },
         });
 

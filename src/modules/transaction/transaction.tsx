@@ -60,12 +60,14 @@ export default function Transaction({ withTopBar = true }: Props) {
 
   const [query, setQuery] = useInputState("");
   const { data: categories } = trpc.category.list.useQuery();
-  const { data: items, isLoading } = trpc.transaction.list.useQuery({
+  const {
+    data: items,
+    isLoading,
+    refetch,
+  } = trpc.transaction.list.useQuery({
     query,
-    date: {
-      from: dateValue[0],
-      to: dateValue[1],
-    },
+    from: dateValue[0],
+    to: dateValue[1],
   });
   const {
     mutate,
@@ -137,6 +139,16 @@ export default function Transaction({ withTopBar = true }: Props) {
       type: record.type,
     });
   }
+
+  function setCurrentDate() {
+    var begin = moment().format("YYYY-MM-01");
+    var end = moment().format("YYYY-MM-") + moment().daysInMonth();
+    setDateValue([new Date(begin), new Date(end)]);
+  }
+
+  useEffect(() => {
+    setCurrentDate();
+  }, []);
 
   useEffect(() => {
     if (isSuccess) {
@@ -274,13 +286,14 @@ export default function Transaction({ withTopBar = true }: Props) {
         <Group>
           <DateRangePicker
             sx={{ flex: 1 }}
+            dropdownType="modal"
             placeholder="Select date"
             label="Select date"
             mb="lg"
             value={dateValue}
             onChange={setDateValue}
           />
-          <Button>Apply</Button>
+          <Button onClick={setCurrentDate}>Current date</Button>
         </Group>
 
         <TransactionStat
@@ -358,6 +371,7 @@ export default function Transaction({ withTopBar = true }: Props) {
             fetching={isLoading}
             selectedRecords={selectedRecords}
             onSelectedRecordsChange={setSelectedRecords}
+            fontSize="sm"
             columns={[
               {
                 accessor: "no",

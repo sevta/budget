@@ -88,6 +88,14 @@ export default function Settings({}: Props) {
                   label: "Open Sans",
                   value: "Open Sans",
                 },
+                {
+                  label: "Plus Jakarta Sans",
+                  value: "Plus Jakarta Sans",
+                },
+                {
+                  label: "Roboto",
+                  value: "Roboto",
+                },
               ]}
             />
           </Stack>

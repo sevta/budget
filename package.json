@@ -6,13 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "tauri": "tauri",
+    "export": "next export",
+    "migrate:dev:postgres": "dotenv -e .env.local -- npx prisma migrate dev",
+    "migrate:prod:postgres": "dotenv -e .env -- npx prisma migrate dev"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/server": "^11.10.0",
     "@fontsource/josefin-sans": "^4.5.11",
     "@fontsource/open-sans": "^4.5.12",
+    "@fontsource/plus-jakarta-sans": "^4.5.10",
+    "@fontsource/roboto": "^4.5.8",
     "@mantine/core": "^5.5.1",
     "@mantine/dates": "^5.5.0",
     "@mantine/form": "^5.5.0",
@@ -30,6 +36,7 @@
     "@trpc/server": "^10.0.0-proxy-beta.13",
     "argon2": "^0.29.1",
     "dayjs": "^1.11.5",
+    "dotenv-cli": "^6.0.0",
     "mantine-datatable": "^1.7.4",
     "moment": "^2.29.4",
     "next": "12.3.1",
