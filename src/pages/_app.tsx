@@ -257,6 +257,7 @@ function App(props: any) {
               defaultProps: {
                 radius: "lg",
                 shadow: "xs",
+                // withBorder: true,
               },
             },
             Card: {

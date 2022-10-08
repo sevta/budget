@@ -6,6 +6,7 @@ import {
   Badge,
   Box,
   Button,
+  Checkbox,
   Container,
   Group,
   NumberInput,
@@ -293,24 +294,38 @@ export default function Transaction({ withTopBar = true }: Props) {
       {withTopBar && <TransactionTopBar />}
 
       <Container py="lg" mt={70}>
-        <Group>
-          <DateRangePicker
-            sx={{ flex: 1 }}
-            dropdownType="modal"
-            placeholder="Select date"
-            label="Select date"
-            mb="lg"
-            value={dateValue}
-            onChange={setDateValue}
-          />
-          <Button onClick={setCurrentDate}>Current date</Button>
-        </Group>
-
         <TransactionStat
           totalIncome={items?.totalIncome}
           totalOutcome={items?.totalOutcome}
           subTotal={items?.subTotal}
         />
+        <Paper p="md" mb="lg" mt="md">
+          <Stack spacing={0}>
+            <Group>
+              <DateRangePicker
+                sx={{ flex: 1 }}
+                dropdownType="modal"
+                placeholder="Select date"
+                label="Select date"
+                mb="lg"
+                value={dateValue}
+                onChange={setDateValue}
+                clearable={false}
+              />
+              <Button onClick={setCurrentDate}>Clear</Button>
+            </Group>
+
+            <Checkbox.Group>
+              {Object.keys(ItemType).map((type, index) => (
+                <Checkbox
+                  key={index}
+                  label={type.toLocaleLowerCase()}
+                  value={type}
+                />
+              ))}
+            </Checkbox.Group>
+          </Stack>
+        </Paper>
 
         <Paper mt="lg" p="lg">
           <Group position="apart">
