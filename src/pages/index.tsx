@@ -21,6 +21,9 @@ export default function Index() {
           <Text variant="link" component={NextLink} href="/booking">
             Booking
           </Text>
+          <Text variant="link" component={NextLink} href="/playground/jdclone">
+            Playground
+          </Text>
         </Group>
         <Button onClick={() => signOut()}>Logout</Button>
       </Stack>

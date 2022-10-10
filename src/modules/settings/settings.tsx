@@ -96,6 +96,10 @@ export default function Settings({}: Props) {
                   label: "Roboto",
                   value: "Roboto",
                 },
+                {
+                  label: "Poppins",
+                  value: "Poppins",
+                },
               ]}
             />
           </Stack>

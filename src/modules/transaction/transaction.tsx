@@ -322,7 +322,7 @@ export default function Transaction({ withTopBar = true }: Props) {
               </Button>
             </Group>
 
-            <Checkbox.Group>
+            <Checkbox.Group label="Type" mt="sm">
               {Object.keys(ItemType).map((type, index) => (
                 <Checkbox
                   key={index}
