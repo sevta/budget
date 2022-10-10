@@ -1,15 +1,4 @@
-import {
-  Button,
-  Card,
-  Group,
-  LoadingOverlay,
-  NumberInput,
-  Stack,
-  Text,
-  Textarea,
-  TextInput,
-  Title,
-} from "@mantine/core";
+import { Button, LoadingOverlay, Paper, Text, Title } from "@mantine/core";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import Layout from "src/common/components/layouts/layout";
@@ -22,7 +11,7 @@ export default function Dashboard() {
     <Layout>
       <LoadingOverlay visible={fetch} />
       <Title>Dashboard</Title>
-      <Card mt="lg">
+      <Paper p="md" mt="lg">
         <Title weight={500} order={3}>
           Hi, {data?.user?.name}
         </Title>
@@ -35,19 +24,7 @@ export default function Dashboard() {
         <Button mt="sm" variant="subtle" onClick={() => setFetch(true)}>
           Try fetch...
         </Button>
-      </Card>
-
-      <Card mt="lg">
-        <Title order={3}>Create new budget</Title>
-        <Stack mt="sm">
-          <TextInput label="Title" description="TItle of budget" />
-          <Textarea label="Description" description="Description of budget" />
-          <NumberInput label="Price" description="Price of budget" />
-          <Group>
-            <Button variant="light">Save</Button>
-          </Group>
-        </Stack>
-      </Card>
+      </Paper>
     </Layout>
   );
 }

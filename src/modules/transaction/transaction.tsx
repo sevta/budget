@@ -194,7 +194,7 @@ export default function Transaction({ withTopBar = true }: Props) {
       padding={0}
       aside={
         <Aside
-          width={{ base: 340 }}
+          width={{ base: 400 }}
           sx={{
             border: 0,
             backgroundColor:
@@ -301,18 +301,25 @@ export default function Transaction({ withTopBar = true }: Props) {
         />
         <Paper p="md" mb="lg" mt="md">
           <Stack spacing={0}>
-            <Group>
+            <Group align="flex-end">
+              <TextInput label="Search" value={query} onChange={setQuery} />
               <DateRangePicker
                 sx={{ flex: 1 }}
                 dropdownType="modal"
                 placeholder="Select date"
                 label="Select date"
-                mb="lg"
                 value={dateValue}
                 onChange={setDateValue}
                 clearable={false}
               />
-              <Button onClick={setCurrentDate}>Clear</Button>
+              <Button
+                onClick={() => {
+                  setCurrentDate();
+                  setQuery("");
+                }}
+              >
+                Clear
+              </Button>
             </Group>
 
             <Checkbox.Group>
@@ -354,11 +361,7 @@ export default function Transaction({ withTopBar = true }: Props) {
                 <Popover.Dropdown>
                   <Title order={3}>Filter</Title>
                   <Group mt="sm" align="flex-end">
-                    <TextInput
-                      label="Search"
-                      value={query}
-                      onChange={setQuery}
-                    />
+                    <TextInput label="Search" />
                     <DatePicker label="from" />
                     <DatePicker label="to" />
                     <Button>Apply</Button>

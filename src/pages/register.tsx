@@ -13,7 +13,7 @@ import { useForm, zodResolver } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
 import { User } from "@prisma/client";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { trpc } from "src/common/utils/trpc";
 import { z } from "zod";
 
@@ -22,6 +22,8 @@ export default function RegisterPage() {
 
   const theme = useMantineTheme();
   const router = useRouter();
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const form = useForm<Partial<User>>({
     initialValues: {
@@ -40,6 +42,7 @@ export default function RegisterPage() {
   });
 
   async function handleSubmit(values: Partial<User>) {
+    setIsLoading(true);
     try {
       mutate({
         name: values.name || "",
@@ -48,6 +51,8 @@ export default function RegisterPage() {
       });
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -98,7 +103,18 @@ export default function RegisterPage() {
               {...form.getInputProps("password")}
             />
             <Group>
-              <Button type="submit">Sign up</Button>
+              <Button fullWidth type="submit" loading={isLoading}>
+                Sign up
+              </Button>
+              <Button
+                fullWidth
+                variant="subtle"
+                loading={isLoading}
+                color="dark"
+                onClick={() => router.push("/signin")}
+              >
+                Sign in
+              </Button>
             </Group>
           </Stack>
         </form>

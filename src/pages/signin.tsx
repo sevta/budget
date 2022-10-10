@@ -17,13 +17,14 @@ import { User } from "@prisma/client";
 import { IconBrandGithub } from "@tabler/icons";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 
 export default function SignInPage() {
   const theme = useMantineTheme();
   const router = useRouter();
   const { data, status } = useSession();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const form = useForm<Partial<User>>({
     initialValues: {
@@ -68,8 +69,9 @@ export default function SignInPage() {
           <PasswordInput label="Password" {...form.getInputProps("password")} />
           <Stack spacing="xs">
             <Button
-              loading={status === "loading"}
+              loading={isLoading || status === "authenticated"}
               onClick={async () => {
+                setIsLoading(true);
                 try {
                   const resp = await signIn("credentials", {
                     redirect: false,
@@ -90,6 +92,8 @@ export default function SignInPage() {
                   console.log(resp);
                 } catch (error) {
                   console.log(error);
+                } finally {
+                  setIsLoading(false);
                 }
               }}
             >

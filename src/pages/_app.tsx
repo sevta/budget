@@ -256,7 +256,7 @@ function App(props: any) {
             Paper: {
               defaultProps: {
                 radius: "lg",
-                shadow: "xs",
+                // shadow: "xs",
                 // withBorder: true,
               },
             },
@@ -281,7 +281,6 @@ function App(props: any) {
           <ModalsProvider>
             <NotificationsProvider>
               <NextNProgress />
-
               <Component {...pageProps} />
             </NotificationsProvider>
           </ModalsProvider>
