@@ -76,7 +76,7 @@ function App(props: any) {
 
   const [fontFamily] = useLocalStorage({
     key: "font-theme",
-    defaultValue: "Source Sans Pro",
+    defaultValue: "Roboto",
   });
 
   return (
