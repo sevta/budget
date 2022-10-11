@@ -71,7 +71,7 @@ function App(props: any) {
 
   const [colorScheme] = useLocalStorage<MantineColor>({
     key: "color-theme",
-    defaultValue: "primary",
+    defaultValue: "lime",
   });
 
   const [fontFamily] = useLocalStorage({
