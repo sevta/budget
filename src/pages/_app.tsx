@@ -46,6 +46,16 @@ import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
 import "@fontsource/poppins/800.css";
 import "@fontsource/poppins/900.css";
+
+import "@fontsource/public-sans/100.css";
+import "@fontsource/public-sans/200.css";
+import "@fontsource/public-sans/300.css";
+import "@fontsource/public-sans/400.css";
+import "@fontsource/public-sans/500.css";
+import "@fontsource/public-sans/600.css";
+import "@fontsource/public-sans/700.css";
+import "@fontsource/public-sans/800.css";
+import "@fontsource/public-sans/900.css";
 import { themeConfig } from "src/common/config";
 
 function App(props: any) {
@@ -87,7 +97,19 @@ function App(props: any) {
           colorScheme: value,
           primaryColor: colorScheme,
           fontFamily,
-          primaryShade: 7,
+          headings: {
+            fontFamily,
+          },
+          globalStyles(theme) {
+            return {
+              html: {
+                "-webkit-font-smoothing": "antialiased",
+                textSizeAdjust: "100%",
+              },
+            };
+          },
+
+          primaryShade: 5,
           colors: {
             secondary: [
               "#C8E9E8",

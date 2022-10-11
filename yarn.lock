@@ -265,6 +265,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-4.5.10.tgz#44dbfeacb5d89efca5ad7ad6cc941b2ac1ee424b"
   integrity sha512-oYZVHsnlwV3VWM1SE/m6SUxVh0QLk5+2wB+lBiXcI7N/0KVQWmV9YykaPqfJHBLvmdya+MAOnv+BQHeLU1vOOw==
 
+"@fontsource/public-sans@^4.5.11":
+  version "4.5.11"
+  resolved "https://registry.yarnpkg.com/@fontsource/public-sans/-/public-sans-4.5.11.tgz#a95f6129c8bf092da7ae956eebf688b35b389e2c"
+  integrity sha512-waejL3VQnifnLVwQGcW2bULD2vUaevjE9OKmOSAmBACAebZnnYznHL+NL4NgW6B+b1wyltmIr6jBF5XMZVWgYA==
+
 "@fontsource/roboto@^4.5.8":
   version "4.5.8"
   resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-4.5.8.tgz#56347764786079838faf43f0eeda22dd7328437f"

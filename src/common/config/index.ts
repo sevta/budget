@@ -156,7 +156,9 @@ export const themeConfig: MantineProviderProps["theme"] = {
     },
     Paper: {
       defaultProps: {
+        withBorder: true,
         radius: "lg",
+        // shadow: "xs",
         // shadow: "xs",
         // withBorder: true,
       },

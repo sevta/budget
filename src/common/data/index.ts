@@ -38,6 +38,12 @@ export const menus: Menu[] = [
     icon: IconTriangleSquareCircle,
     url: "/dashboard/transaction",
   },
+
+  {
+    label: "Invoice",
+    icon: IconTriangleSquareCircle,
+    url: "/dashboard/invoice",
+  },
   {
     label: "Settings",
     icon: IconSettings,

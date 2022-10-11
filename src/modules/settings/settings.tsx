@@ -100,6 +100,10 @@ export default function Settings({}: Props) {
                   label: "Poppins",
                   value: "Poppins",
                 },
+                {
+                  label: "Public Sans",
+                  value: "Public Sans",
+                },
               ]}
             />
           </Stack>
