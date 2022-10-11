@@ -22,6 +22,9 @@ export const themeConfig: MantineProviderProps["theme"] = {
             marginBlock: 2,
           },
           input: {
+            "&:focus": {
+              borderWidth: 2,
+            },
             // backgroundColor:
             //   theme.colorScheme === "light"
             //     ? theme.colors.gray[0]
@@ -44,6 +47,9 @@ export const themeConfig: MantineProviderProps["theme"] = {
       styles(theme) {
         return {
           input: {
+            "&:focus": {
+              borderWidth: 2,
+            },
             // backgroundColor:
             //   theme.colorScheme === "light"
             //     ? theme.colors.gray[0]
@@ -62,6 +68,9 @@ export const themeConfig: MantineProviderProps["theme"] = {
       styles(theme) {
         return {
           input: {
+            "&:focus": {
+              borderWidth: 2,
+            },
             // backgroundColor:
             //   theme.colorScheme === "light"
             //     ? theme.colors.gray[0]
@@ -80,6 +89,9 @@ export const themeConfig: MantineProviderProps["theme"] = {
       styles(theme) {
         return {
           input: {
+            "&:focus": {
+              borderWidth: 2,
+            },
             // backgroundColor:
             //   theme.colorScheme === "light"
             //     ? theme.colors.gray[0]
@@ -99,6 +111,9 @@ export const themeConfig: MantineProviderProps["theme"] = {
       styles(theme) {
         return {
           input: {
+            "&:focus": {
+              borderWidth: 2,
+            },
             // backgroundColor:
             //   theme.colorScheme === "light"
             //     ? theme.colors.gray[0]
@@ -118,6 +133,9 @@ export const themeConfig: MantineProviderProps["theme"] = {
       styles(theme) {
         return {
           input: {
+            "&:focus": {
+              borderWidth: 2,
+            },
             // backgroundColor:
             //   theme.colorScheme === "light"
             //     ? theme.colors.gray[0]
@@ -136,6 +154,10 @@ export const themeConfig: MantineProviderProps["theme"] = {
       styles(theme) {
         return {
           input: {
+            "&:focus": {
+              borderWidth: 2,
+            },
+
             // backgroundColor:
             //   theme.colorScheme === "light"
             //     ? theme.colors.gray[0]
