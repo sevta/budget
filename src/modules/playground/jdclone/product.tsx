@@ -11,6 +11,7 @@ import {
   Stack,
   Text,
   Title,
+  useMantineTheme,
 } from "@mantine/core";
 import { useRouter } from "next/router";
 import JdNavbar from "./components/jdnavbar";
@@ -20,6 +21,7 @@ type Props = {};
 
 export default function JDProduct({}: Props) {
   const router = useRouter();
+  const theme = useMantineTheme();
 
   return (
     <Box>
@@ -69,7 +71,7 @@ export default function JDProduct({}: Props) {
             </Accordion>
           </Grid.Col>
           <Grid.Col xs={9}>
-            <Divider />
+            <Divider color="gray.2" />
             <Group py="md" position="apart">
               <Group>
                 <Text size="sm" color="dimmed">
@@ -78,7 +80,19 @@ export default function JDProduct({}: Props) {
                 <Select
                   defaultValue="Best Seller"
                   data={["ukuran", "Best Seller", "warna"]}
-                  radius={0}
+                  transition="pop-top-left"
+                  transitionDuration={80}
+                  transitionTimingFunction="ease"
+                  styles={{
+                    dropdown: {
+                      borderRadius: theme.radius.lg,
+                    },
+                    item: {
+                      borderRadius: 12,
+                      paddingBlock: 4,
+                      marginBlock: 2,
+                    },
+                  }}
                 />
               </Group>
               <Group>
@@ -87,7 +101,7 @@ export default function JDProduct({}: Props) {
                 </Text>
               </Group>
             </Group>
-            <Divider />
+            <Divider color="gray.2" />
 
             <SimpleGrid mt="lg" cols={4}>
               {Array(20)

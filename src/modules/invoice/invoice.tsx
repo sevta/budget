@@ -23,12 +23,7 @@ export default function Invoice({}: Props) {
       <Container fluid={false} size="lg">
         <Title order={3}>Create new invoice</Title>
 
-        <Paper
-          mt="lg"
-          withBorder={false}
-          shadow="sm"
-          sx={{ overflow: "hidden" }}
-        >
+        <Paper mt="lg" withBorder={false} sx={{ overflow: "hidden" }}>
           <SimpleGrid cols={2} p="lg">
             <div>
               <Group position="apart">

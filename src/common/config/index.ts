@@ -13,6 +13,14 @@ export const themeConfig: MantineProviderProps["theme"] = {
     Select: {
       styles(theme) {
         return {
+          dropdown: {
+            borderRadius: theme.radius.lg,
+          },
+          item: {
+            borderRadius: 9,
+            paddingBlock: 4,
+            marginBlock: 2,
+          },
           input: {
             // backgroundColor:
             //   theme.colorScheme === "light"
@@ -26,6 +34,9 @@ export const themeConfig: MantineProviderProps["theme"] = {
       },
       defaultProps: {
         radius: "md",
+        transition: "pop-top-left",
+        transitionDuration: 80,
+        transitionTimingFunction: "ease",
       },
     },
 
@@ -156,7 +167,7 @@ export const themeConfig: MantineProviderProps["theme"] = {
     },
     Paper: {
       defaultProps: {
-        withBorder: true,
+        // withBorder: true,
         radius: "lg",
         // shadow: "xs",
         // shadow: "xs",

@@ -93,7 +93,7 @@ export function NavbarMinimal() {
   ));
 
   return (
-    <Navbar height="100%" width={{ base: 80 }} p="md">
+    <Navbar height="100%" width={{ base: 80 }} p="md" sx={{ border: 0 }}>
       <Center py="sm">
         <MantineLogo type="mark" size={30} />
       </Center>

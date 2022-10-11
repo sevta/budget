@@ -44,7 +44,7 @@ export default function Layout({
         // background: theme.colors["gray"][0],
         backgroundColor:
           theme.colorScheme === "light"
-            ? theme.fn.lighten(theme.colors["gray"][1], 0.7)
+            ? theme.fn.lighten(theme.colors["gray"][1], 0.5)
             : theme.colors.dark[9],
       }}
       {...(showSideBar && {

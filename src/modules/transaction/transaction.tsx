@@ -212,9 +212,9 @@ export default function Transaction({ withTopBar = false }: Props) {
             </Group>
           </TopBar> */}
           <Box p="lg">
-            <Text weight={700} mb="lg" sx={{ fontSize: 23 }}>
+            <Title order={3} mb="lg">
               Create new outcome/income
-            </Text>
+            </Title>
 
             <form onSubmit={form.onSubmit(handleSubmit)}>
               <Stack>
