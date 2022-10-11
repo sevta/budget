@@ -12,11 +12,10 @@ import {
   LoadingOverlay,
   Paper,
   PasswordInput,
-  Text,
   Title,
 } from "@mantine/core";
 import Script from "next/script";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Debugger from "src/common/components/elements/debugger";
 import Layout from "src/common/components/layouts/layout";
 import useMediaUploader from "src/common/hooks/useMediaUploader";
@@ -29,7 +28,7 @@ const cld = new Cloudinary({
   },
 });
 export default function Files({}: Props) {
-  const [showFiles, setShowFiles] = useState(true);
+  const [showFiles, setShowFiles] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
   const { upload, media, isLoading } = useMediaUploader({ files });
 
@@ -37,10 +36,6 @@ export default function Files({}: Props) {
 
   // Use the image with public ID, 'front_face'.
   const myImage = cld.image("front_face");
-
-  useEffect(() => {
-    console.log({ cld: cld.image() });
-  }, [cld]);
 
   return (
     <Layout>
@@ -53,7 +48,7 @@ export default function Files({}: Props) {
         <Center sx={{ minHeight: "calc(100vh - 40px)" }}>
           <Group align="center">
             <PasswordInput sx={{ width: 300 }} placeholder="Password" />
-            <Button onClick={() => setShowFiles(true)}>Open</Button>
+            <Button>Open</Button>
           </Group>
         </Center>
       ) : (
@@ -71,11 +66,6 @@ export default function Files({}: Props) {
             </FileButton>
           </Paper>
 
-          {files.length > 0 && (
-            <Text size="sm" mt="sm">
-              Picked files:
-            </Text>
-          )}
           {media?.map((img, index) => (
             <Image src={img} key={index} />
           ))}
