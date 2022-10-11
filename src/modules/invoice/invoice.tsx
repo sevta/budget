@@ -2,6 +2,7 @@ import {
   Button,
   Container,
   Group,
+  Modal,
   Paper,
   SimpleGrid,
   Stack,
@@ -10,16 +11,26 @@ import {
   Title,
   useMantineTheme,
 } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import { IconPencil, IconPlus } from "@tabler/icons";
 import Layout from "src/common/components/layouts/layout";
+import ModalListClient from "./components/modal-list-client";
 
 type Props = {};
 
 export default function Invoice({}: Props) {
   const theme = useMantineTheme();
+  const [showModalClient, handlerShowModalClient] = useDisclosure(false);
 
   return (
     <Layout>
+      <Modal
+        opened={showModalClient}
+        onClose={handlerShowModalClient.close}
+        withCloseButton={false}
+      >
+        <ModalListClient />
+      </Modal>
       <Container fluid={false} size="lg">
         <Title order={3}>Create new invoice</Title>
 
@@ -34,6 +45,7 @@ export default function Invoice({}: Props) {
                   variant="subtle"
                   compact
                   leftIcon={<IconPencil size={16} />}
+                  onClick={handlerShowModalClient.open}
                 >
                   change
                 </Button>

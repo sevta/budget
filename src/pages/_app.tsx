@@ -109,7 +109,7 @@ function App(props: any) {
             };
           },
 
-          primaryShade: 5,
+          primaryShade: 7,
           colors: {
             secondary: [
               "#C8E9E8",
