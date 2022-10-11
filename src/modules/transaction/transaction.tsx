@@ -2,7 +2,6 @@
 import {
   ActionIcon,
   Aside,
-  Avatar,
   Badge,
   Box,
   Button,
@@ -11,7 +10,6 @@ import {
   Group,
   NumberInput,
   Paper,
-  Popover,
   Radio,
   Select,
   Stack,
@@ -32,7 +30,7 @@ import { useInputState } from "@mantine/hooks";
 import { openConfirmModal } from "@mantine/modals";
 import { showNotification } from "@mantine/notifications";
 import { Item, ItemType } from "@prisma/client";
-import { IconEditCircle, IconSettings, IconX } from "@tabler/icons";
+import { IconEditCircle, IconX } from "@tabler/icons";
 import { DataTable } from "mantine-datatable";
 import moment from "moment";
 import { useSession } from "next-auth/react";
@@ -40,7 +38,6 @@ import { useEffect, useState } from "react";
 import Layout from "src/common/components/layouts/layout";
 import { formatRupiah } from "src/common/utils/formatRupiah";
 import { trpc } from "src/common/utils/trpc";
-import TopBar from "./components/top-bar";
 import TransactionStat from "./components/transaction-stat";
 import TransactionTopBar from "./components/transaction-top-bar";
 import { transactionCreateSchema } from "./transaction.schema";
@@ -49,7 +46,7 @@ type Props = {
   withTopBar?: boolean;
 };
 
-export default function Transaction({ withTopBar = true }: Props) {
+export default function Transaction({ withTopBar = false }: Props) {
   const theme = useMantineTheme();
 
   const [selectedRecords, setSelectedRecords] = useState<any>([]);
@@ -197,13 +194,13 @@ export default function Transaction({ withTopBar = true }: Props) {
           width={{ base: 400 }}
           sx={{
             border: 0,
-            backgroundColor:
-              theme.colorScheme === "light"
-                ? theme.white
-                : theme.colors.dark[7],
+            // backgroundColor:
+            //   theme.colorScheme === "light"
+            //     ? theme.white
+            //     : theme.colors.dark[7],
           }}
         >
-          <TopBar shade={8}>
+          {/* <TopBar shade={8}>
             <Group>
               <Avatar radius="xl" />
               <Stack spacing={0}>
@@ -213,7 +210,7 @@ export default function Transaction({ withTopBar = true }: Props) {
                 </Text>
               </Stack>
             </Group>
-          </TopBar>
+          </TopBar> */}
           <Box p="lg">
             <Text weight={700} mb="lg" sx={{ fontSize: 23 }}>
               Create new outcome/income
@@ -293,7 +290,10 @@ export default function Transaction({ withTopBar = true }: Props) {
     >
       {withTopBar && <TransactionTopBar />}
 
-      <Container py="lg" mt={70}>
+      <Container pb="lg" mt="lg">
+        <Title order={3} mb="lg">
+          Transaction
+        </Title>
         <TransactionStat
           totalIncome={items?.totalIncome}
           totalOutcome={items?.totalOutcome}
@@ -352,22 +352,7 @@ export default function Transaction({ withTopBar = true }: Props) {
                   {query}
                 </Badge>
               )}
-              <Popover position="bottom-end" radius="lg">
-                <Popover.Target>
-                  <Button variant="light" leftIcon={<IconSettings size={16} />}>
-                    Filter
-                  </Button>
-                </Popover.Target>
-                <Popover.Dropdown>
-                  <Title order={3}>Filter</Title>
-                  <Group mt="sm" align="flex-end">
-                    <TextInput label="Search" />
-                    <DatePicker label="from" />
-                    <DatePicker label="to" />
-                    <Button>Apply</Button>
-                  </Group>
-                </Popover.Dropdown>
-              </Popover>
+
               <Button
                 color="red"
                 variant="outline"
@@ -393,7 +378,6 @@ export default function Transaction({ withTopBar = true }: Props) {
           </Group>
           <DataTable
             mt="sm"
-            striped
             records={items?.data}
             highlightOnHover
             fetching={isLoading}
