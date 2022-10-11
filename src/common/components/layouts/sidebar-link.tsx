@@ -5,23 +5,29 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { NextLink } from "@mantine/next";
-import { ReactNode } from "react";
 
 interface SideBarLinkProps extends UnstyledButtonProps {
   label: string;
-  icon: ReactNode;
+  icon: any;
   url: string;
   onClick?: () => void;
 }
 
 export default function SideBarLink({
   label,
-  icon,
+  icon: Icon,
   url,
   onClick,
   ...props
 }: SideBarLinkProps) {
   const theme = useMantineTheme();
+
+  const iconConfig = {
+    size: 22,
+    ...(theme.colorScheme === "dark" && {
+      color: "white",
+    }),
+  };
 
   return (
     // <Tooltip label={label} position="right">
@@ -39,7 +45,7 @@ export default function SideBarLink({
       onClick={onClick && onClick}
       {...props}
     >
-      {icon}
+      <Icon {...iconConfig} />
       <Text size="xs" color={theme.colorScheme === "dark" ? "white" : "dark"}>
         {label}
       </Text>

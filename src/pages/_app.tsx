@@ -46,6 +46,7 @@ import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
 import "@fontsource/poppins/800.css";
 import "@fontsource/poppins/900.css";
+import { themeConfig } from "src/common/config";
 
 function App(props: any) {
   const {
@@ -86,9 +87,7 @@ function App(props: any) {
           colorScheme: value,
           primaryColor: colorScheme,
           fontFamily,
-          headings: {
-            fontFamily,
-          },
+          primaryShade: 7,
           colors: {
             secondary: [
               "#C8E9E8",
@@ -114,177 +113,7 @@ function App(props: any) {
               "#533D82",
             ],
           },
-
-          loader: "dots",
-
-          components: {
-            Container: {
-              defaultProps: {
-                fluid: true,
-              },
-            },
-
-            Select: {
-              styles(theme) {
-                return {
-                  input: {
-                    // backgroundColor:
-                    //   theme.colorScheme === "light"
-                    //     ? theme.colors.gray[0]
-                    //     : theme.fn.darken(theme.colors.dark[6], 0.1),
-                    // borderWidth: 0,
-                    // borderBottomWidth: 2,
-                    // borderColor: theme.fn.primaryColor(),
-                  },
-                };
-              },
-              defaultProps: {
-                radius: "md",
-              },
-            },
-
-            NumberInput: {
-              styles(theme) {
-                return {
-                  input: {
-                    // backgroundColor:
-                    //   theme.colorScheme === "light"
-                    //     ? theme.colors.gray[0]
-                    //     : theme.fn.darken(theme.colors.dark[6], 0.1),
-                    // borderWidth: 0,
-                    // borderBottomWidth: 2,
-                    // borderColor: theme.fn.primaryColor(),
-                  },
-                };
-              },
-              defaultProps: {
-                radius: "md",
-              },
-            },
-            Textarea: {
-              styles(theme) {
-                return {
-                  input: {
-                    // backgroundColor:
-                    //   theme.colorScheme === "light"
-                    //     ? theme.colors.gray[0]
-                    //     : theme.fn.darken(theme.colors.dark[6], 0.1),
-                    // borderWidth: 0,
-                    // borderBottomWidth: 2,
-                    // borderColor: theme.fn.primaryColor(),
-                  },
-                };
-              },
-              defaultProps: {
-                radius: "md",
-              },
-            },
-            DatePicker: {
-              styles(theme) {
-                return {
-                  input: {
-                    // backgroundColor:
-                    //   theme.colorScheme === "light"
-                    //     ? theme.colors.gray[0]
-                    //     : theme.fn.darken(theme.colors.dark[6], 0.1),
-                    // borderWidth: 0,
-                    // borderBottomWidth: 2,
-                    // borderColor: theme.fn.primaryColor(),
-                  },
-                };
-              },
-
-              defaultProps: {
-                radius: "md",
-              },
-            },
-            DateRangePicker: {
-              styles(theme) {
-                return {
-                  input: {
-                    // backgroundColor:
-                    //   theme.colorScheme === "light"
-                    //     ? theme.colors.gray[0]
-                    //     : theme.fn.darken(theme.colors.dark[6], 0.1),
-                    // borderWidth: 0,
-                    // borderBottomWidth: 2,
-                    // borderColor: theme.fn.primaryColor(),
-                  },
-                };
-              },
-
-              defaultProps: {
-                radius: "md",
-              },
-            },
-            PasswordInput: {
-              styles(theme) {
-                return {
-                  input: {
-                    // backgroundColor:
-                    //   theme.colorScheme === "light"
-                    //     ? theme.colors.gray[0]
-                    //     : theme.fn.darken(theme.colors.dark[6], 0.1),
-                    // borderWidth: 0,
-                    // borderBottomWidth: 2,
-                    // borderColor: theme.fn.primaryColor(),
-                  },
-                };
-              },
-              defaultProps: {
-                radius: "md",
-              },
-            },
-            TextInput: {
-              styles(theme) {
-                return {
-                  input: {
-                    // backgroundColor:
-                    //   theme.colorScheme === "light"
-                    //     ? theme.colors.gray[0]
-                    //     : theme.fn.darken(theme.colors.dark[6], 0.1),
-                    // borderWidth: 0,
-                    // borderBottomWidth: 2,
-                    // borderColor: theme.fn.primaryColor(),
-                  },
-                };
-              },
-              defaultProps: {
-                radius: "md",
-              },
-            },
-            Modal: {
-              defaultProps: {
-                radius: "lg",
-              },
-            },
-            Button: {
-              defaultProps: {
-                radius: "md",
-              },
-            },
-            Paper: {
-              defaultProps: {
-                radius: "lg",
-                // shadow: "xs",
-                // withBorder: true,
-              },
-            },
-            Card: {
-              defaultProps: {
-                radius: "lg",
-                shadow: "xs",
-              },
-              // styles(theme, params) {
-              //   return {
-              //     backgroundColor:
-              //       theme.colorScheme === "light"
-              //         ? theme.white
-              //         : theme.colors.dark[9],
-              //   };
-              // },
-            },
-          },
+          ...themeConfig,
         }}
       >
         <SessionProvider session={session}>

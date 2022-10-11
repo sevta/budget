@@ -10,17 +10,22 @@ import {
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { FiSettings } from "react-icons/fi";
+import { NavbarMinimal } from "./navbar-minimal";
 import SideBar from "./sidebar";
+
+type SidebarType = "minimal" | "default";
 
 interface LayoutProps extends AppShellProps {
   showSideBar?: boolean;
   showSettingsButton?: boolean;
+  sidebarType?: SidebarType;
 }
 
 export default function Layout({
   children,
   showSideBar = true,
   showSettingsButton = false,
+  sidebarType,
   ...props
 }: LayoutProps) {
   const theme = useMantineTheme();
@@ -38,11 +43,11 @@ export default function Layout({
       sx={{
         backgroundColor:
           theme.colorScheme === "light"
-            ? theme.fn.lighten(theme.colors[theme.primaryColor][0], 0.3)
+            ? theme.fn.lighten(theme.colors[theme.primaryColor][1], 0.7)
             : theme.colors.dark[9],
       }}
       {...(showSideBar && {
-        navbar: <SideBar />,
+        navbar: sidebarType === "default" ? <SideBar /> : <NavbarMinimal />,
       })}
       {...props}
     >

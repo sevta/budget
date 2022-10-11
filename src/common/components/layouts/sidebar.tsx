@@ -1,25 +1,11 @@
 import { Box, Navbar, Stack, Title, useMantineTheme } from "@mantine/core";
-import {
-  IconBrandAppgallery,
-  IconCalendar,
-  IconSettings,
-  IconTriangleSquareCircle,
-  IconWorldWww,
-} from "@tabler/icons";
 import { signOut } from "next-auth/react";
-import { AiOutlinePoweroff, AiOutlineUsergroupDelete } from "react-icons/ai";
-import { HiOutlineHome } from "react-icons/hi";
+import { AiOutlinePoweroff } from "react-icons/ai";
+import { menus } from "src/common/data";
 import SideBarLink from "./sidebar-link";
 
 export default function SideBar() {
   const theme = useMantineTheme();
-
-  const iconConfig = {
-    size: 22,
-    ...(theme.colorScheme === "dark" && {
-      color: "white",
-    }),
-  };
 
   return (
     <Navbar
@@ -46,49 +32,12 @@ export default function SideBar() {
         <Title order={3}>L.A</Title>
       </Box>
       <Stack spacing="lg" mt="lg">
-        <SideBarLink
-          label="Home"
-          icon={<HiOutlineHome {...iconConfig} />}
-          url="/dashboard"
-        />
-        <SideBarLink
-          label="Website"
-          icon={<IconWorldWww {...iconConfig} />}
-          url="/"
-        />
-        <SideBarLink
-          label="Outgoing"
-          icon={<AiOutlineUsergroupDelete {...iconConfig} />}
-          url="/dashboard/outgoing"
-        />
-        <SideBarLink
-          label="Category"
-          icon={<AiOutlineUsergroupDelete {...iconConfig} />}
-          url="/dashboard/category"
-        />
-        <SideBarLink
-          label="Files"
-          icon={<IconBrandAppgallery {...iconConfig} />}
-          url="/dashboard/files"
-        />
-        <SideBarLink
-          label="Transaction"
-          icon={<IconTriangleSquareCircle {...iconConfig} />}
-          url="/dashboard/transaction"
-        />
-        <SideBarLink
-          label="Calendar"
-          icon={<IconCalendar {...iconConfig} />}
-          url="/dashboard/calendar"
-        />
-        <SideBarLink
-          label="Settings"
-          icon={<IconSettings {...iconConfig} />}
-          url="/dashboard/settings"
-        />
+        {menus.map((menu, index) => (
+          <SideBarLink {...menu} icon={menu.icon} key={index} />
+        ))}
         <SideBarLink
           label="Logout"
-          icon={<AiOutlinePoweroff {...iconConfig} />}
+          icon={AiOutlinePoweroff}
           url="#"
           onClick={async () => await signOut({ callbackUrl: "/signin" })}
         />
