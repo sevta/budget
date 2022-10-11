@@ -429,14 +429,7 @@ export default function Transaction({ withTopBar = false }: Props) {
                   );
                 },
               },
-              {
-                accessor: "date",
-                render(record) {
-                  return (
-                    <span>{moment(record.date).format("YYYY-MM-DD")}</span>
-                  );
-                },
-              },
+
               {
                 accessor: "createdAt",
                 render(record) {

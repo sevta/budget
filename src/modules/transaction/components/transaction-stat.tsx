@@ -48,8 +48,10 @@ export default function TransactionStat({
             ]}
           />
           <div>
-            <Text align="center">Total Accumulate</Text>
-            <Text size="xl" align="center" weight={600}>
+            <Text size="sm" color="dark.2" weight={500} align="center">
+              Total Accumulate
+            </Text>
+            <Text align="center" weight={700}>
               {formatRupiah(subTotal)}
             </Text>
           </div>
@@ -74,8 +76,10 @@ export default function TransactionStat({
             }
           />
           <Stack spacing={0}>
-            <Text align="center">Total pengeluaran</Text>
-            <Text align="center" size="xl" weight={600}>
+            <Text size="sm" color="dark.2" weight={500} align="center">
+              Total pengeluaran
+            </Text>
+            <Text align="center" weight={700}>
               {formatRupiah(totalOutcome || 0)}
             </Text>
           </Stack>
@@ -103,8 +107,10 @@ export default function TransactionStat({
             }
           />
           <Stack spacing={0}>
-            <Text align="center">Total pemasukan</Text>
-            <Text align="center" size="xl" weight={600}>
+            <Text align="center" size="sm" color="dark.2" weight={500}>
+              Total pemasukan
+            </Text>
+            <Text align="center" weight={700}>
               {formatRupiah(totalIncome || 0)}
             </Text>
           </Stack>
@@ -129,8 +135,10 @@ export default function TransactionStat({
             }
           />
           <Stack spacing={0}>
-            <Text align="center">Dana pinjaman</Text>
-            <Text align="center" size="xl" weight={600}>
+            <Text size="sm" color="dark.2" weight={500}>
+              Dana pinjaman
+            </Text>
+            <Text align="center" weight={700}>
               {formatRupiah(0)}
             </Text>
           </Stack>
